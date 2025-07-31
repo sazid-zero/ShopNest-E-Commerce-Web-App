@@ -130,7 +130,7 @@ export default function FlashSale() {
 
 
     return (
-        <div className="bg-white rounded-t-3xl mt-12 mx-auto p-6">
+        <div className="bg-white rounded-t-3xl sm:mt-12 mt-6 mx-auto p-6">
             {/* Header */}
             <span className="flex gap-1 items-center mb-6">
             <img src="/bar.png" alt="bar" className="h-6 w-10" />
