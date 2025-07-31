@@ -14,7 +14,7 @@ const ProductCard = ({ title, description, image }: { title: string; description
 const NewArrival = () => {
     return (
         <>
-            <div className="px-6 pt-4 mb-6">
+            <div className="px-6 pt-4 sm:mb-6 mb-4">
         <span className="flex gap-1 items-center">
           <img src="/bar.png" alt="bar" className="h-6 w-10" />
           <p className="text-white font-bold text-lg">Featured</p>
