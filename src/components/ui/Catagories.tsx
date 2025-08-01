@@ -33,7 +33,7 @@ export default function CategoryGrid() {
         <section className="py-10 px-6 sm:px-10 bg-white">
             <span className="flex gap-1 items-center mb-12">
           <img src="/bar3.png" alt="bar" className="h-7 w-10" />
-          <p className="text-gray-900 font-bold text-2xl ">Browse By Category</p>
+          <p className="text-gray-900 font-bold text-2xl ">Featured Category</p>
         </span>
             <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-6">
                 {categories.map(({ name, icon: Icon }, idx) => (

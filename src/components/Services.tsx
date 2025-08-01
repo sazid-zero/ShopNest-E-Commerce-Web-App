@@ -1,4 +1,5 @@
 import { Truck, Headphones, ShieldCheck } from "lucide-react"
+import StoreBanner from "@/components/StoreBanner.tsx";
 
 export default function ServiceHighlights() {
     return (
@@ -33,7 +34,12 @@ export default function ServiceHighlights() {
                     <h4 className="text-sm font-semibold text-gray-800 uppercase">Money Back Guarantee</h4>
                     <p className="text-sm text-gray-500">We return money within 30 days.</p>
                 </div>
+
             </div>
+            <div className="max-w-7xl mx-auto">
+                <StoreBanner/>
+            </div>
+
         </section>
     )
 }

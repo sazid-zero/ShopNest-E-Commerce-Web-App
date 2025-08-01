@@ -54,7 +54,7 @@ export default function Footer() {
                         <li><a href="#" className="hover:text-white">Help Center</a></li>
                         <li><a href="#" className="hover:text-white">Track Order</a></li>
                         <li><a href="#" className="hover:text-white">Returns & Refunds</a></li>
-                        <li><a href="#" className="hover:text-white">Shipping Info</a></li>
+                        <li><a href="#" className="hover:text-white">Become a Seller</a></li>
                         <li><a href="#" className="hover:text-white">Contact Us</a></li>
                     </ul>
                 </div>

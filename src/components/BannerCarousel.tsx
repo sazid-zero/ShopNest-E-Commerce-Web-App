@@ -58,7 +58,7 @@ export default function BannerCarousel() {
             {/* Main Banner */}
             <motion.div
                 variants={childVariants}
-                className="rounded-lg overflow-hidden shadow-[0_10px_10px_rgba(0,0,0,0.3)] md:w-[70%] w-full"
+                className="rounded-lg sm:p-4 overflow-hidden shadow-[0_10px_10px_rgba(0,0,0,0.3)] md:w-[70%] w-full"
             >
                 <Swiper
                     modules={[Autoplay, Pagination, Navigation]}
@@ -113,7 +113,7 @@ export default function BannerCarousel() {
             {/* Side Banners */}
             <motion.div
                 variants={childVariants}
-                className="flex md:flex-col sm:gap-4 gap-2 md:w-[30%] w-full"
+                className="flex sm:py-4 sm:pr-4 md:flex-col sm:gap-4 gap-2 md:w-[30%] w-full"
             >
                 {[banners2, banners3].map((group, groupIdx) => (
                     <motion.div

@@ -6,6 +6,7 @@ import Footer from "@/components/footer.tsx";
 import CategoryGrid from "@/components/ui/Catagories.tsx";
 import BestSelling from "@/components/BestSeller.tsx";
 import ServiceHighlights from "@/components/Services.tsx";
+import BestSellingStores from "@/components/BestStores.tsx";
 
 export default function Landing(){
     return(
@@ -17,6 +18,7 @@ export default function Landing(){
                 <FlashSale/>
                 <BestSelling/>
                 <CategoryGrid/>
+                <BestSellingStores/>
                 <ServiceHighlights/>
                 <Footer/>
             </main>
