@@ -13,7 +13,7 @@ const ProductCard = ({ title, description, image }: { title: string; description
 
 const NewArrival = () => {
     return (
-        <>
+        <section>
             <div className="px-6 pt-4 mb-6">
         <span className="flex gap-1 items-center">
           <img src="/bar.png" alt="bar" className="h-6 w-10" />
@@ -53,7 +53,7 @@ const NewArrival = () => {
                     </div>
                 </div>
             </div>
-        </>
+        </section>
     );
 };
 

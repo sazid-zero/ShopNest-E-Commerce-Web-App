@@ -12,6 +12,7 @@ import {
     ShoppingBag,
     MonitorSmartphone,
 } from "lucide-react"
+import { useNavigate } from "react-router-dom";
 
 const categories = [
     { name: "Phones", icon: Smartphone },
@@ -29,6 +30,15 @@ const categories = [
 ]
 
 export default function CategoryGrid() {
+
+    const navigate = useNavigate();
+
+    const handleCategoryClick = (categoryName: string) => {
+        navigate(`/products?category=${encodeURIComponent(categoryName)}`);
+    };
+
+
+
     return (
         <section className="py-10 px-6 sm:px-10 bg-white">
             <span className="flex gap-1 items-center mb-12">
@@ -39,6 +49,8 @@ export default function CategoryGrid() {
                 {categories.map(({ name, icon: Icon }, idx) => (
                     <button
                         key={idx}
+                        onClick={() => handleCategoryClick(name)}
+
                         className="flex flex-col items-center justify-center bg-gray-100 hover:bg-blue-100 hover:shadow-[0_10px_10px_rgba(0,0,0,0.3)] rounded-lg p-4 transition-all group"
                     >
                         <Icon className="text-blue-600 h-8 w-8 mb-2 group-hover:scale-110 transition-transform" />

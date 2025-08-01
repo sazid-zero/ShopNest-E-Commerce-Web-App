@@ -14,7 +14,7 @@ export default function ServiceHighlights() {
                         <Truck className="text-blue-600 h-6 w-6" />
                     </div>
                     <h4 className="text-sm font-semibold text-gray-800 uppercase">Free and Fast Delivery</h4>
-                    <p className="text-sm text-gray-500">Free delivery for all orders over $140.</p>
+                    <p className="text-sm text-gray-500">Free delivery for all orders over ৳140.</p>
                 </div>
 
                 {/* Customer Service */}
@@ -26,7 +26,7 @@ export default function ServiceHighlights() {
                     <p className="text-sm text-gray-500">Friendly 24/7 customer support.</p>
                 </div>
 
-                {/* Money Back Guarantee */}
+                {/* MoneyBack Guarantee */}
                 <div className="flex flex-col items-center gap-3">
                     <div className="bg-blue-100 p-3 rounded-full">
                         <ShieldCheck className="text-blue-600 h-6 w-6" />

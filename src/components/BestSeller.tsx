@@ -1,90 +1,18 @@
 import {Star, ShoppingCart, Heart} from "lucide-react"
 import {useState} from "react";
+import {allProducts} from "@/lib/products";
+import {useNavigate} from "react-router-dom";
 
-const bestSellingProducts = [
-    {
-        id: 1,
-        title: "Breed Dry Dog Food",
-        image: "/best/dogfood.jpg",
-        price: 1200,
-        original: 1600,
-        discount: 25,
-        rating: 4.5,
-        reviews: 88
-    },
-    {
-        id: 2,
-        title: "CANON EOS 200D Mark-II",
-        image: "/best/camera.jpg",
-        price: 37000,
-        original: 40000,
-        discount: 10,
-        rating: 4.8,
-        reviews: 99
-    },
-    {
-        id: 3,
-        title: "ASUS FHD Gaming Laptop",
-        image: "/best/laptop.jpg",
-        price: 39500,
-        original: 42000,
-        discount: 15,
-        rating: 4.4,
-        reviews: 68
-    },
-    {
-        id: 4,
-        title: "Curology Product Set",
-        image: "/best/curology2.png",
-        price: 1990,
-        original: 2100,
-        discount: 5,
-        rating: 4.0,
-        reviews: 37
-    },
-    {
-        id: 5,
-        title: "Kids Electric Car",
-        image: "/best/kidscar.jpg",
-        price: 10900,
-        original: 13100,
-        discount: 17,
-        rating: 4.3,
-        reviews: 41
-    },
-    {
-        id: 6,
-        title: "Jr. Zoom Soccer Cleats",
-        image: "/best/cleats.jpg",
-        price: 750,
-        original: 850,
-        discount: 12,
-        rating: 4.3,
-        reviews: 54
-    },
-    {
-        id: 7,
-        title: "GP1 Shooter USB Gamepad",
-        image: "/best/gamepad.jpg",
-        price: 1400,
-        original: 2000,
-        discount: 30,
-        rating: 4.6,
-        reviews: 62
-    },
-    {
-        id: 8,
-        title: "Quilted Satin Jacket",
-        image: "/best/satin.jpg",
-        price: 3750,
-        original: 3900,
-        discount: 5,
-        rating: 4.7,
-        reviews: 82
-    }
-]
 
 export default function BestSelling() {
+
+    const bestProducts = allProducts.filter((product) => product.type === "best-seller");
+
+    const navigate = useNavigate();
+
+    const handleViewAllClick = () => {
+        navigate("/products?type=best-seller");
+    };
 
     const [cartCount, setCartCount] = useState<Record<number, number>>({})
     const [wishlistItems, setWishlistItems] = useState<Record<number, boolean>>({})
@@ -105,16 +33,16 @@ export default function BestSelling() {
             <div className="flex items-center justify-between mb-6">
 
                 <h2 className="text-2xl font-bold text-gray-800">🔥 Best Selling</h2>
-                <a
-                    href="#"
+                <button
+                    onClick={handleViewAllClick}
                     className="text-sm font-medium text-blue-600 hover:text-blue-800 transition"
                 >
                     View All Products
-                </a>
+                </button>
             </div>
 
             <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-6">
-                {bestSellingProducts.map((product) => (
+                {bestProducts.map((product) => (
                     <div
                         key={product.id}
                         className="bg-gray-50 rounded-lg shadow-xl p-4 flex flex-col hover:shadow-2xl transition-all"

@@ -1,27 +1,21 @@
 import BannerCarousel from "@/components/BannerCarousel.tsx";
-import NavBar from "@/components/comp-580.tsx";
 import FlashSale from "@/components/FlashSale.tsx";
-import NewArrival from "@/components/Featured.tsx";
-import Footer from "@/components/footer.tsx";
 import CategoryGrid from "@/components/ui/Catagories.tsx";
 import BestSelling from "@/components/BestSeller.tsx";
 import ServiceHighlights from "@/components/Services.tsx";
 import BestSellingStores from "@/components/BestStores.tsx";
+import Featured from "@/components/Featured.tsx";
 
 export default function Landing(){
     return(
-        <div>
-            <NavBar/>
-            <main className="pt-16">
-                <BannerCarousel/>
-                <NewArrival/>
-                <FlashSale/>
-                <BestSelling/>
-                <CategoryGrid/>
-                <BestSellingStores/>
-                <ServiceHighlights/>
-                <Footer/>
-            </main>
+        <div >
+            <BannerCarousel/>
+            <Featured/>
+            <FlashSale/>
+            <BestSelling />
+            <CategoryGrid />
+            <BestSellingStores />
+            <ServiceHighlights/>
         </div>
     );
 }

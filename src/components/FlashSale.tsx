@@ -1,110 +1,7 @@
 import { useEffect, useState } from "react"
 import {Star, ShoppingCart, Heart} from "lucide-react"
-
-const products = [
-    {
-        id: 1,
-        image: "/flash/hv-g92.webp",
-        title: "HAVIT HV-G92 Gamepad",
-        price: 1200,
-        original: 1600,
-        discount: 40,
-        rating: 4.5,
-        reviews: 88
-    },
-    {
-        id: 2,
-        image: "/flash/ak-900.jpg",
-        title: "AK-900 Wired Keyboard",
-        price: 960,
-        original: 1160,
-        discount: 35,
-        rating: 4.0,
-        reviews: 75
-    },
-    {
-        id: 3,
-        image: "/flash/monitor.webp",
-        title: "IPS LCD Gaming Monitor",
-        price: 37000,
-        original: 40000,
-        discount: 30,
-        rating: 4.8,
-        reviews: 99
-    },
-    {
-        id: 4,
-        image: "/flash/mouse.webp",
-        title: "Ergonomic Gaming Mouse",
-        price: 750,
-        original: 850,
-        discount: 25,
-        rating: 4.3,
-        reviews: 54
-    },
-
-    {
-        id: 5,
-        image: "/flash/headset.jpg",
-        title: "Noise-Cancelling Headset",
-        price: 1400,
-        original: 2000,
-        discount: 30,
-        rating: 4.6,
-        reviews: 62
-    },
-    {
-        id: 6,
-        image: "/flash/chair.webp",
-        title: "S-Series Comfort Chair",
-        price: 3750,
-        original: 3900,
-        discount: 25,
-        rating: 4.7,
-        reviews: 82
-    },
-    {
-        id: 7,
-        image: "/flash/laptop.webp",
-        title: "HP 14s-dq3139TU Intel Celeron N4500 14\" FHD Laptop",
-        price: 39500,
-        original: 42000,
-        discount: 15,
-        rating: 4.4,
-        reviews: 68
-    },
-    {
-        id: 8,
-        image: "/flash/tablet.webp",
-        title: "HONOR Pad X8a 4GB RAM 128GB Storage 11\" Tablet",
-        price: 19900,
-        original: 21000,
-        discount: 30,
-        rating: 4.0,
-        reviews: 37
-    },
-    {
-        id: 9,
-        image: "/flash/usbhub.webp",
-        title: "USB 3.0 4-in-1 Hub",
-        price: 700,
-        original: 800,
-        discount: 33,
-        rating: 4.1,
-        reviews: 29
-    },
-    {
-        id: 10,
-        image: "/flash/powerbank.webp",
-        title: "Hoco J89 10000mAh 20W Fast Charging Digital Display Power Bank",
-        price: 1090,
-        original: 1310,
-        discount: 30,
-        rating: 4.3,
-        reviews: 41
-    }
-]
-
+import { allProducts } from "@/lib/products";
+import {useNavigate} from "react-router-dom";
 
 export default function FlashSale() {
     const [timeLeft] = useState({
@@ -117,6 +14,14 @@ export default function FlashSale() {
     useEffect(() => {
         // Add countdown timer logic here later
     }, [])
+    const flashProducts = allProducts.filter((product) => product.type === "flash-sale");
+
+    const navigate = useNavigate();
+
+    const handleViewAllClick = () => {
+        navigate("/products?type=flash-sale");
+    };
+
 
     const [cartCounts, setCartCounts] = useState<Record<number, number>>({})
     const [wishlistItems, setWishlistItems] = useState<Record<number, boolean>>({})
@@ -148,7 +53,7 @@ export default function FlashSale() {
 
             {/* Product List */}
             <div className="flex gap-4 overflow-x-auto pb-6 hide-scrollbar">
-                {products.map((product) => (
+                {flashProducts.map((product) => (
                     <div
                         key={product.id}
                         className="min-w-[240px] bg-gray-50 rounded-md p-4 flex flex-col shadow-xl transform transition-transform duration-300 hover:scale-105 hover:shadow-[0_10px_10px_rgba(0,0,0,0.3)]"
@@ -232,7 +137,9 @@ export default function FlashSale() {
 
             {/* CTA Button */}
             <div className="text-center mt-6">
-                <button className="px-6 py-2 text-sm font-semibold bg-gradient-to-r from-blue-500 to-purple-500 hover:from-purple-500 hover:to-blue-500 duration-200 text-white rounded-full shadow-lg hover:scale-105 transition-all hover:shadow-[0_10px_10px_rgba(0,0,0,0.3)]">
+                <button
+                    onClick={handleViewAllClick}
+                    className="px-6 py-2 text-sm font-semibold bg-gradient-to-r from-blue-500 to-purple-500 hover:from-purple-500 hover:to-blue-500 duration-200 text-white rounded-full shadow-lg hover:scale-105 transition-all hover:shadow-[0_10px_10px_rgba(0,0,0,0.3)]">
                     <span className="inline-block align-middle">View All Products</span>
                 </button>
             </div>
