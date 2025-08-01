@@ -74,7 +74,7 @@ export default function BestSellingStores() {
             </span>
 
 
-            <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-4 gap-8">
+            <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-4 sm:gap-8 gap-2">
                 {stores.map((store, index) => (
                     <div key={index} className="relative bg-gray-50 rounded-xl shadow-2xl hover:shadow-2xl hover:scale-105 transition-transform duration-300 overflow-hidden">
                         {/* Cover Image */}
