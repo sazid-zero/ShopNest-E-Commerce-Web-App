@@ -1,7 +1,7 @@
 import { useCartStore } from "@/lib/cart";
 import { useWishlistStore } from "@/lib/wishlist";
 import { Star, ShoppingCart, Heart } from "lucide-react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 export interface Product {
     id: number;
@@ -18,12 +18,20 @@ export interface Product {
 }
 
 export default function ProductCard({ product }: { product: Product }) {
-    const { addToCart, cartItems } = useCartStore();
+    const { addToCart, cartItems, toggleItemSelection } = useCartStore();
     const { toggleWishlist, wishlistItems } = useWishlistStore();
+    const navigate = useNavigate();
 
     const getCartCount = () => {
         const item = cartItems.find((item) => item.id === product.id);
         return item ? item.quantity : 0;
+    };
+
+    const handleBuyNow = (e: React.MouseEvent) => {
+        e.preventDefault();
+        addToCart(product.id);
+        toggleItemSelection(product.id);
+        navigate('/cart');
     };
 
     return (
@@ -70,7 +78,7 @@ export default function ProductCard({ product }: { product: Product }) {
             </div>
             <div className=" mt-3 flex gap-2 items-center justify-center">
                 <button 
-                    onClick={(e) => { e.preventDefault(); }}
+                    onClick={handleBuyNow}
                     className="w-full px-3 py-2 text-xs font-semibold bg-gradient-to-r from-blue-500 via-blue-600 to-blue-700 text-white rounded-full shadow-lg hover:from-blue-600 hover:to-blue-800 hover:scale-105 transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-blue-400 focus:ring-offset-2 hover:shadow-[0_10px_10px_rgba(0,0,0,0.3)]">
                     <span className="inline-block align-middle">Buy Now</span>
                 </button>
