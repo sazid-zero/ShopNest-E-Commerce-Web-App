@@ -36,7 +36,7 @@ export default function NavBar() {
   const navigationLinks = [
     { href: "/", label: "Home", icon: Home },
     { href: "/products", label: "Products", icon: ShoppingBag },
-    { href: "/deals", label: "Deals", icon: Tag },
+    
     { href: "/orders", label: "Orders", icon: Package },
     {
       label: "Contact",
