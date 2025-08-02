@@ -7,7 +7,6 @@ import {
   Home,
   ShoppingBag,
   LayoutGrid,
-  Tag,
   Package,
   Phone,
   ChevronDown,
@@ -124,7 +123,7 @@ export default function NavBar() {
                       if (link.isScrollLink) {
                         e.preventDefault();
                         document.getElementById(link.targetId)?.scrollIntoView({ behavior: "smooth" });
-                        setIsOpen(false); // Close mobile menu after clicking scroll link
+                        setIsOpen(false);
                       }
                     }}
                     variants={itemVariants}
