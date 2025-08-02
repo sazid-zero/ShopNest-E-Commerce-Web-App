@@ -27,7 +27,7 @@ export default function Products() {
     };
 
     return (
-        <div className="bg-white rounded-t-3xl sm:mt-12 mt-6 mx-auto p-6">
+        <div className="bg-white min-h-screen rounded-t-3xl sm:mt-12 mt-6 mx-auto p-6">
             <div className="flex items-center justify-between mb-6">
                 <h2 className="text-2xl font-bold text-gray-800">{heading()}</h2>
             </div>
