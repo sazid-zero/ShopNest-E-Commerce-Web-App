@@ -37,7 +37,7 @@ export default function ProductCard({ product }: { product: Product }) {
     return (
         <Link to={`/product/${product.id}`} className="block">
             <div
-                className="sm:min-w-[240px] bg-gray-50 rounded-md p-4 flex flex-col shadow-xl transform transition-transform duration-300 hover:scale-105 hover:shadow-[0_10px_10px_rgba(0,0,0,0.3)]"
+                className="min-w-[240px] bg-gray-50 rounded-md p-4 flex flex-col shadow-xl transform transition-transform duration-300 hover:scale-105 hover:shadow-[0_10px_10px_rgba(0,0,0,0.3)]"
             >
             <div className="relative group mb-3">
                 <img

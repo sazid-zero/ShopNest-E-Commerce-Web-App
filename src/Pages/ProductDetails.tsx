@@ -17,7 +17,7 @@ const ProductDetails = () => {
     return (
         <div className="bg-white rounded-t-3xl sm:mt-12 mt-6 mx-auto p-6">
             {/* Product Info */}
-            <div className="grid md:grid-cols-2 gap-8">
+            <div className="flex gap-8 overflow-auto">
                 <img src={product.image} alt={product.title} className="w-full rounded-lg shadow" />
                 <div>
                     <h1 className="text-3xl font-bold mb-2">{product.title}</h1>
