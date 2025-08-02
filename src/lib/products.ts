@@ -11,6 +11,7 @@ export const allProducts: Product[] = [
         reviews: 88,
         type: "flash-sale",
         category: "Gaming",
+        description: "This is a great product.",
     },
     {
         id: 2,
@@ -23,6 +24,7 @@ export const allProducts: Product[] = [
         reviews: 75,
         type: "flash-sale",
         category: "Computers",
+        description: "This is a great product.",
     },
     {
         id: 3,
@@ -35,6 +37,7 @@ export const allProducts: Product[] = [
         reviews: 99,
         type: "flash-sale",
         category: "TV & Audio",
+        description: "This is a great product.",
     },
     {
         id: 4,
@@ -47,6 +50,7 @@ export const allProducts: Product[] = [
         reviews: 54,
         type: "flash-sale",
         category: "Gaming",
+        description: "This is a great product.",
     },
     {
         id: 5,
@@ -59,6 +63,7 @@ export const allProducts: Product[] = [
         reviews: 62,
         type: "flash-sale",
         category: "Headphones",
+        description: "This is a great product.",
     },
     {
         id: 6,
@@ -71,6 +76,7 @@ export const allProducts: Product[] = [
         reviews: 82,
         type: "flash-sale",
         category: "Accessories",
+        description: "This is a great product.",
     },
     {
         id: 7,
@@ -83,6 +89,7 @@ export const allProducts: Product[] = [
         reviews: 68,
         type: "flash-sale",
         category: "Computers",
+        description: "This is a great product.",
     },
     {
         id: 8,
@@ -95,6 +102,7 @@ export const allProducts: Product[] = [
         reviews: 37,
         type: "flash-sale",
         category: "Wearables",
+        description: "This is a great product.",
     },
     {
         id: 9,
@@ -107,6 +115,7 @@ export const allProducts: Product[] = [
         reviews: 29,
         type: "flash-sale",
         category: "Accessories",
+        description: "This is a great product.",
     },
     {
         id: 10,
@@ -119,6 +128,7 @@ export const allProducts: Product[] = [
         reviews: 41,
         type: "flash-sale",
         category: "Accessories",
+        description: "This is a great product.",
     },
     {
         id: 11,
@@ -131,6 +141,7 @@ export const allProducts: Product[] = [
         reviews: 88,
         type: "best-seller",
         category: "Smart Home",
+        description: "This is a great product.",
     },
     {
         id: 12,
@@ -143,6 +154,7 @@ export const allProducts: Product[] = [
         reviews: 99,
         type: "best-seller",
         category: "Camera",
+        description: "This is a great product.",
     },
     {
         id: 13,
@@ -155,6 +167,7 @@ export const allProducts: Product[] = [
         reviews: 68,
         type: "best-seller",
         category: "Computers",
+        description: "This is a great product.",
     },
     {
         id: 14,
@@ -167,6 +180,7 @@ export const allProducts: Product[] = [
         reviews: 37,
         type: "best-seller",
         category: "Smart Home",
+        description: "This is a great product.",
     },
     {
         id: 15,
@@ -179,6 +193,7 @@ export const allProducts: Product[] = [
         reviews: 41,
         type: "best-seller",
         category: "Accessories",
+        description: "This is a great product.",
     },
     {
         id: 16,
@@ -191,6 +206,7 @@ export const allProducts: Product[] = [
         reviews: 54,
         type: "best-seller",
         category: "Wearables",
+        description: "This is a great product.",
     },
     {
         id: 17,
@@ -203,6 +219,7 @@ export const allProducts: Product[] = [
         reviews: 62,
         type: "best-seller",
         category: "Gaming",
+        description: "This is a great product.",
     },
     {
         id: 18,
@@ -215,5 +232,6 @@ export const allProducts: Product[] = [
         reviews: 82,
         type: "best-seller",
         category: "Wearables",
+        description: "This is a great product.",
     },
 ]
