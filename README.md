@@ -1,69 +1,85 @@
-# React + TypeScript + Vite
+# 🛒 ShopNest – E-Commerce Web App (Frontend Showcase)
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+ShopNest is a modern **frontend-only e-commerce web application** built with **React + TypeScript + Vite**.  
+It demonstrates how a complete shopping experience can be implemented **without a backend**, using **local session management** to persist data like wishlist, cart, orders, and browsing history directly in the browser.
 
-Currently, two official plugins are available:
+🔗 **Live Demo:** [ShopNest on Vercel](https://shopnest.vercel.app/)  
+📂 **Repository:** [GitHub](https://github.com/sazid-zero/ShopNest-E-Commerce-Web-App)
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+---
 
-## Expanding the ESLint configuration
+## ✨ Features
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+- 🛍️ **Product Catalog** – Browse products with categories, images, and details  
+- 🛒 **Cart System** – Add/remove items, view totals, and manage checkout flow  
+- ❤️ **Wishlist** – Save favorite products locally  
+- 📜 **Order History** – Track past orders, all stored in browser session  
+- 🔄 **Local Session Management** – No backend required; all data persists in the browser  
+- 🎞️ **Carousel Integration** – Smooth product sliders for better UX  
+- 🎬 **Framer Motion Animations** – Elegant transitions and micro-interactions  
+- 📱 **Responsive Design** – Optimized for mobile, tablet, and desktop  
 
-```js
-export default tseslint.config([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
+---
 
-      // Remove tseslint.configs.recommended and replace with this
-      ...tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      ...tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      ...tseslint.configs.stylisticTypeChecked,
+## 🛠️ Tech Stack
 
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+| Category        | Technology |
+|-----------------|------------|
+| Frontend        | React, TypeScript, Vite |
+| Styling         | CSS / Tailwind (if applied) |
+| Animations      | Framer Motion |
+| UI Enhancements | Carousel |
+| State Management| React hooks / Context API |
+| Deployment      | Vercel |
+
+---
+
+## 📦 Installation & Setup
+
+Clone the repository and install dependencies:
+
+```bash
+git clone https://github.com/sazid-zero/ShopNest-E-Commerce-Web-App.git
+cd ShopNest-E-Commerce-Web-App
+npm install
+Run the development server:
+npm run dev
+Build for production:
+npm run build
 ```
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+## 📂 Project Structure
+ShopNest-E-Commerce-Web-App/
+├── public/              # Static assets
+├── src/                 # Source code
+│   ├── components/      # Reusable UI components
+│   ├── pages/           # Page-level views
+│   ├── hooks/           # Custom React hooks
+│   └── App.tsx          # Root component
+├── index.html           # Entry HTML
+├── package.json         # Dependencies & scripts
+├── vite.config.ts       # Vite configuration
+└── vercel.json          # Deployment config
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+## 🚀 Deployment
+This project is deployed on Vercel.
+To deploy your own version:
+- Push code to GitHub
+- Connect repository to Vercel
+- Configure build settings (npm run build)
+- Deploy instantly with automatic previews
 
-export default tseslint.config([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-```
+## 🎯 Goal of the Project
+The main objective of ShopNest is to showcase full e-commerce functionality without a backend.
+By leveraging local session management, users can experience wishlist, cart, orders, and history features entirely in the browser — making it a perfect frontend demo project.
+
+## 🤝 Contributing
+Contributions are welcome!
+- Fork the repo
+- Create a feature branch
+- Submit a pull request
+
+## 📜 License
+This project is open-source under the MIT License.
+
+---
