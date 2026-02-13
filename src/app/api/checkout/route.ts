@@ -3,7 +3,7 @@ import Stripe from "stripe";
 import { auth } from "@/lib/firebase-admin";
 
 const stripe = new Stripe(process.env.STRIPE_SECRET_KEY!, {
-  apiVersion: "2024-10-28.acacia", // Use latest API version or what was installed
+  apiVersion: "2025-02-24.acacia", // Use latest API version or what was installed
 });
 
 export async function POST(req: NextRequest) {
