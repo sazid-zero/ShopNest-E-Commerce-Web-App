@@ -71,7 +71,7 @@ export async function GET() {
       }
     ];
 
-    const results = [];
+    const results: { name: string; id: any; }[] = [];
 
     for (const p of productsToSeed) {
         // 1. Get or Create Category
