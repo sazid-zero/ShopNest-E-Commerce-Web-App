@@ -62,12 +62,19 @@ export async function GET() {
         image_url: "/gucci.png",
         category_slug: "beauty"
       },
-        {
+      {
         name: "Apple Watch Series 10",
         description: "Thinner design, bigger display.",
         price: 399.00,
         image_url: "/apple-watch-series-10.jpg",
         category_slug: "wearables"
+      },
+      {
+         name: "Samsung Galaxy S25 Ultra",
+         description: "The latest Samsung flagship with AI features.",
+         price: 1299.99,
+         image_url: "/s25-ultra.jpg",
+         category_slug: "electronics"
       }
     ];
 
@@ -104,7 +111,7 @@ export async function GET() {
 
       // Update banners if this product corresponds to one
       if (p.name.includes("Apple iPhone 16")) {
-          await pool.query("UPDATE banners SET link_url = $1 WHERE title LIKE '%Apple 16%'", [`/product/${productId}`]);
+          await pool.query("UPDATE banners SET link_url = $1 WHERE title LIKE '%iPhone 16%'", [`/product/${productId}`]);
       }
       if (p.name.includes("iPad Pro")) {
           await pool.query("UPDATE banners SET link_url = $1 WHERE title LIKE '%iPad Pro%'", [`/product/${productId}`]);

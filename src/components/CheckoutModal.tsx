@@ -43,7 +43,7 @@ export default function CheckoutModal({ isOpen, onClose }: CheckoutModalProps) {
 
     return (
         <Dialog open={isOpen} onOpenChange={onClose}>
-            <DialogContent className="sm:max-w-[480px] bg-white p-0 rounded-3xl overflow-hidden border-none shadow-2xl">
+            <DialogContent className="sm:max-w-[480px] w-[calc(100%-32px)] bg-white p-0 rounded-3xl border-none shadow-2xl max-h-[90vh] flex flex-col">
                 <AnimatePresence mode="wait">
                     {!isSuccess ? (
                         <motion.div 
@@ -51,7 +51,7 @@ export default function CheckoutModal({ isOpen, onClose }: CheckoutModalProps) {
                             initial={{ opacity: 0, scale: 0.95 }}
                             animate={{ opacity: 1, scale: 1 }}
                             exit={{ opacity: 0, scale: 1.05 }}
-                            className="p-8"
+                            className="p-8 overflow-y-auto custom-scrollbar"
                         >
                             <DialogHeader className="mb-8">
                                 <div className="bg-blue-50 w-16 h-16 rounded-2xl flex items-center justify-center mb-4 border border-blue-100">
@@ -61,7 +61,7 @@ export default function CheckoutModal({ isOpen, onClose }: CheckoutModalProps) {
                                 <p className="text-gray-500 font-medium">Finalize your purchase and securely checkout.</p>
                             </DialogHeader>
 
-                            <div className="space-y-4 max-h-[300px] overflow-y-auto pr-2 mb-8 custom-scrollbar">
+                            <div className="space-y-4 mb-8">
                                 {selectedCartItems.map(item => (
                                     <div key={item.id} className="flex items-center gap-4 bg-gray-50 p-4 rounded-2xl border border-gray-100">
                                         <div className="w-12 h-12 rounded-xl bg-white p-1 border border-gray-100 shrink-0">
