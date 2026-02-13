@@ -12,6 +12,7 @@ export const allProducts: Product[] = [
         type: "flash-sale",
         category: "Gaming",
         description: "This is a great product.",
+        stock: 50,
     },
     {
         id: 2,
@@ -25,6 +26,7 @@ export const allProducts: Product[] = [
         type: "flash-sale",
         category: "Computers",
         description: "This is a great product.",
+        stock: 50,
     },
     {
         id: 3,
@@ -38,6 +40,7 @@ export const allProducts: Product[] = [
         type: "flash-sale",
         category: "TV & Audio",
         description: "This is a great product.",
+        stock: 50,
     },
     {
         id: 4,
@@ -51,6 +54,7 @@ export const allProducts: Product[] = [
         type: "flash-sale",
         category: "Gaming",
         description: "This is a great product.",
+        stock: 50,
     },
     {
         id: 5,
@@ -64,6 +68,7 @@ export const allProducts: Product[] = [
         type: "flash-sale",
         category: "Headphones",
         description: "This is a great product.",
+        stock: 50,
     },
     {
         id: 6,
@@ -77,6 +82,7 @@ export const allProducts: Product[] = [
         type: "flash-sale",
         category: "Accessories",
         description: "This is a great product.",
+        stock: 50,
     },
     {
         id: 7,
@@ -90,6 +96,7 @@ export const allProducts: Product[] = [
         type: "flash-sale",
         category: "Computers",
         description: "This is a great product.",
+        stock: 50,
     },
     {
         id: 8,
@@ -103,6 +110,7 @@ export const allProducts: Product[] = [
         type: "flash-sale",
         category: "Wearables",
         description: "This is a great product.",
+        stock: 50,
     },
     {
         id: 9,
@@ -116,6 +124,7 @@ export const allProducts: Product[] = [
         type: "flash-sale",
         category: "Accessories",
         description: "This is a great product.",
+        stock: 50,
     },
     {
         id: 10,
@@ -129,6 +138,7 @@ export const allProducts: Product[] = [
         type: "flash-sale",
         category: "Accessories",
         description: "This is a great product.",
+        stock: 50,
     },
     {
         id: 11,
@@ -142,6 +152,7 @@ export const allProducts: Product[] = [
         type: "best-seller",
         category: "Smart Home",
         description: "This is a great product.",
+        stock: 50,
     },
     {
         id: 12,
@@ -155,6 +166,7 @@ export const allProducts: Product[] = [
         type: "best-seller",
         category: "Camera",
         description: "This is a great product.",
+        stock: 50,
     },
     {
         id: 13,
@@ -168,6 +180,7 @@ export const allProducts: Product[] = [
         type: "best-seller",
         category: "Computers",
         description: "This is a great product.",
+        stock: 50,
     },
     {
         id: 14,
@@ -181,6 +194,7 @@ export const allProducts: Product[] = [
         type: "best-seller",
         category: "Smart Home",
         description: "This is a great product.",
+        stock: 50,
     },
     {
         id: 15,
@@ -194,6 +208,7 @@ export const allProducts: Product[] = [
         type: "best-seller",
         category: "Accessories",
         description: "This is a great product.",
+        stock: 50,
     },
     {
         id: 16,
@@ -207,6 +222,7 @@ export const allProducts: Product[] = [
         type: "best-seller",
         category: "Wearables",
         description: "This is a great product.",
+        stock: 50,
     },
     {
         id: 17,
@@ -220,6 +236,7 @@ export const allProducts: Product[] = [
         type: "best-seller",
         category: "Gaming",
         description: "This is a great product.",
+        stock: 50,
     },
     {
         id: 18,
@@ -233,5 +250,6 @@ export const allProducts: Product[] = [
         type: "best-seller",
         category: "Wearables",
         description: "This is a great product.",
+        stock: 50,
     },
 ]
