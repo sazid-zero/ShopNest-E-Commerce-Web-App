@@ -1,13 +1,13 @@
 "use client";
 
 import { useSearchParams, useRouter } from "next/navigation";
-import { useState, useEffect, useMemo } from "react";
+import { useState, useEffect, useMemo, Suspense } from "react";
 import ProductCard from "@/components/ProductCard";
 import { type Product } from "@/components/ProductCard";
 import { Filter, ChevronRight, SlidersHorizontal, X, LayoutGrid, List } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
 
-export default function Products() {
+function ProductsContent() {
     const searchParams = useSearchParams();
     const router = useRouter();
     const type = searchParams.get("type");
@@ -317,5 +317,17 @@ export default function Products() {
                 )}
             </AnimatePresence>
         </div>
+    );
+}
+
+export default function Products() {
+    return (
+        <Suspense fallback={
+            <div className="min-h-screen flex items-center justify-center bg-gray-50">
+                <div className="w-16 h-16 border-4 border-blue-500 border-t-transparent rounded-full animate-spin"></div>
+            </div>
+        }>
+            <ProductsContent />
+        </Suspense>
     );
 }

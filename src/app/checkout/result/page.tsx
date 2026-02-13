@@ -1,26 +1,21 @@
 "use client";
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, Suspense } from "react";
 import { useSearchParams, useRouter } from "next/navigation";
 import Link from "next/link";
 import { useCartStore } from "@/lib/cart";
 
-export default function CheckoutResult() {
+export const dynamic = 'force-dynamic';
+
+function CheckoutContent() {
   const searchParams = useSearchParams();
   const router = useRouter();
   const sessionId = searchParams.get("session_id");
   const status = searchParams.get("status");
   const [loading, setLoading] = useState(true);
-  const { clearSelectedItems } = useCartStore(); // Or clearCart if we had it
+  const { clearSelectedItems } = useCartStore(); 
 
   useEffect(() => {
     if (sessionId) {
-      // Payment successful
-      // Ideally verify session with backend, but for MVP we assume success if ID is present
-      // Clear cart
-      // We might want to clear only purchased items if we had partial checkout, 
-      // but here we just assume the whole cart was bought or at least clear local state.
-      // Actually, we should probably call an API to confirm order and clear DB cart.
-      // For now:
       setLoading(false);
     } else if (status === 'cancel') {
         setLoading(false);
@@ -59,5 +54,13 @@ export default function CheckoutResult() {
         </Link>
       </div>
     </div>
+  );
+}
+
+export default function CheckoutResult() {
+  return (
+    <Suspense fallback={<div className="min-h-screen flex items-center justify-center">Loading...</div>}>
+      <CheckoutContent />
+    </Suspense>
   );
 }
