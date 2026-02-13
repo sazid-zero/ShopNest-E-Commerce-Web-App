@@ -9,7 +9,7 @@ import { motion, AnimatePresence } from "framer-motion";
 export default function ProductDetails() {
     const params = useParams();
     const router = useRouter();
-    const id = params.id;
+    const id = params.id as string;
     const [product, setProduct] = useState<any>(null);
     const [similarItems, setSimilarItems] = useState<any[]>([]);
     const [loading, setLoading] = useState(true);

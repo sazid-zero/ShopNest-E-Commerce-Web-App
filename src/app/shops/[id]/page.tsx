@@ -9,7 +9,7 @@ import { motion } from "framer-motion";
 export default function ShopDetails() {
     const params = useParams();
     const router = useRouter();
-    const id = params.id;
+    const id = params.id as string;
     
     const [shop, setShop] = useState<any>(null);
     const [products, setProducts] = useState<any[]>([]);

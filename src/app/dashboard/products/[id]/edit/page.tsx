@@ -6,7 +6,7 @@ import { ArrowLeft, Save, Loader2 } from 'lucide-react';
 export default function EditProduct() {
   const router = useRouter();
   const params = useParams();
-  const id = params.id;
+  const id = params.id as string;
   const [categories, setCategories] = useState<any[]>([]);
   const [shops, setShops] = useState<any[]>([]);
   const [loading, setLoading] = useState(false);
