@@ -1,17 +1,36 @@
+'use client';
 import { allProducts } from "@/lib/products";
-import { useNavigate } from "react-router-dom";
+import { useRouter } from "next/navigation";
 import ProductCard from "./ProductCard";
 
+import { useState, useEffect } from "react";
+
 export default function BestSelling() {
-    const bestProducts = allProducts.filter((product) => product.type === "best-seller");
-    const navigate = useNavigate();
+    const [products, setProducts] = useState<any[]>([]);
+    const [loading, setLoading] = useState(true);
+
+    useEffect(() => {
+        fetch("/api/products?type=best-seller")
+            .then(res => res.json())
+            .then(data => {
+                setProducts(data);
+                setLoading(false);
+            });
+    }, []);
+
+    const bestProducts = products;
+    const router = useRouter();
+
 
     const handleViewAllClick = () => {
-        navigate("/products?type=best-seller");
+        router.push("/products?type=best-seller");
     };
 
+    if (loading) return <div className="py-10 text-center">Loading Best Sellers...</div>;
+
     return (
-        <section className="py-10 px-6 sm:px-10 bg-white">
+
+        <section className="py-10 px-6 sm:px-10">
             <span className="flex gap-1 items-center mb-6">
                 <img src="/bar.png" alt="bar" className="h-6 w-10" />
                 <p className="text-blue-600 font-bold text-lg"> This Month's </p>

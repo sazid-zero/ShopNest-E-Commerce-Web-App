@@ -1,6 +1,7 @@
+'use client';
 import { useEffect, useState } from "react";
-import { useNavigate } from "react-router-dom";
-import { allProducts } from "@/lib/products.ts";
+import { useRouter } from "next/navigation";
+import { allProducts } from "@/lib/products";
 import ProductCard from "./ProductCard";
 
 export default function FlashSale() {
@@ -11,19 +12,31 @@ export default function FlashSale() {
         seconds: "56"
     });
 
+    const [products, setProducts] = useState<any[]>([]);
+    const [loading, setLoading] = useState(true);
+
     useEffect(() => {
-        // Add countdown timer logic here later
+        fetch("/api/products?type=flash-sale")
+            .then(res => res.json())
+            .then(data => {
+                setProducts(data);
+                setLoading(false);
+            });
     }, []);
 
-    const flashProducts = allProducts.filter((product) => product.type === "flash-sale");
-    const navigate = useNavigate();
+    const flashProducts = products;
+
+    const router = useRouter();
 
     const handleViewAllClick = () => {
-        navigate("/products?type=flash-sale");
+        router.push("/products?type=flash-sale");
     };
 
+    if (loading) return <div className="p-6 text-center">Loading Flash Sales...</div>;
+
     return (
-        <div className="bg-white rounded-t-3xl sm:mt-12 mt-6 mx-auto p-6">
+
+        <div className=" mx-auto p-6 mt-12">
             {/* Header */}
             <span className="flex gap-1 items-center mb-6">
                 <img src="/bar.png" alt="bar" className="h-6 w-10" />
@@ -50,7 +63,7 @@ export default function FlashSale() {
             <div className="text-center mt-6">
                 <button
                     onClick={handleViewAllClick}
-                    className="px-6 py-2 text-sm font-semibold bg-gradient-to-r from-blue-500 to-purple-500 hover:from-purple-500 hover:to-blue-500 duration-200 text-white rounded-full shadow-lg hover:scale-105 transition-all hover:shadow-[0_10px_10px_rgba(0,0,0,0.3)]">
+                    className="px-6 py-2 text-sm font-semibold bg-linear-to-r from-blue-500 to-purple-500 hover:from-purple-500 hover:to-blue-500 duration-200 text-white rounded-full shadow-lg hover:scale-105 transition-all hover:shadow-[0_10px_10px_rgba(0,0,0,0.3)]">
                     <span className="inline-block align-middle">View All Products</span>
                 </button>
             </div>

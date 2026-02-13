@@ -1,3 +1,4 @@
+'use client';
 import {
     Smartphone,
     Laptop,
@@ -8,33 +9,35 @@ import {
     Watch,
     Printer,
     Drone,
-    Home,
+    House,
     ShoppingBag,
     MonitorSmartphone,
 } from "lucide-react"
-import { useNavigate } from "react-router-dom";
+import { useRouter } from "next/navigation";
 
-const categories = [
-    { name: "Phones", icon: Smartphone },
-    { name: "Computers", icon: Laptop },
-    { name: "Headphones", icon: Headphones },
-    { name: "Camera", icon: Camera },
-    { name: "Gaming", icon: Gamepad2 },
-    { name: "TV & Audio", icon: Tv },
-    { name: "SmartWatch", icon: Watch },
-    { name: "Printers", icon: Printer },
-    { name: "Drones", icon: Drone },
-    { name: "Smart Home", icon: Home },
-    { name: "Accessories", icon: ShoppingBag },
-    { name: "Wearables", icon: MonitorSmartphone },
-]
+import * as Icons from "lucide-react";
+import { useState, useEffect } from "react";
 
 export default function CategoryGrid() {
+    const [categories, setCategories] = useState<{ name: string; icon: string }[]>([]);
+    const [loading, setLoading] = useState(true);
 
-    const navigate = useNavigate();
+    useEffect(() => {
+        fetch("/api/categories")
+            .then(res => res.json())
+            .then(data => {
+                setCategories(data);
+                setLoading(false);
+            });
+    }, []);
+
+    const router = useRouter();
+
+    if (loading) return <div className="p-10 text-center">Loading Categories...</div>;
+
 
     const handleCategoryClick = (categoryName: string) => {
-        navigate(`/products?category=${encodeURIComponent(categoryName)}`);
+        router.push(`/products?category=${encodeURIComponent(categoryName)}`);
     };
 
 
@@ -46,19 +49,22 @@ export default function CategoryGrid() {
           <p className="text-gray-900 font-bold text-2xl ">Featured Category</p>
         </span>
             <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-6">
-                {categories.map(({ name, icon: Icon }, idx) => (
-                    <button
-                        key={idx}
-                        onClick={() => handleCategoryClick(name)}
+                {categories.map(({ name, icon }, idx) => {
+                    const Icon = (Icons as any)[icon] || Icons.HelpCircle;
+                    return (
+                        <button
+                            key={idx}
+                            onClick={() => handleCategoryClick(name)}
+                            className="flex flex-col items-center justify-center bg-gray-100 hover:bg-blue-100 hover:shadow-[0_10px_10px_rgba(0,0,0,0.3)] rounded-lg p-4 transition-all group"
+                        >
+                            <Icon className="text-blue-600 h-8 w-8 mb-2 group-hover:scale-110 transition-transform" />
+                            <span className="text-sm font-medium text-gray-700 group-hover:text-blue-600">
+                                {name}
+                            </span>
+                        </button>
+                    );
+                })}
 
-                        className="flex flex-col items-center justify-center bg-gray-100 hover:bg-blue-100 hover:shadow-[0_10px_10px_rgba(0,0,0,0.3)] rounded-lg p-4 transition-all group"
-                    >
-                        <Icon className="text-blue-600 h-8 w-8 mb-2 group-hover:scale-110 transition-transform" />
-                        <span className="text-sm font-medium text-gray-700 group-hover:text-blue-600">
-              {name}
-            </span>
-                    </button>
-                ))}
             </div>
         </section>
     )

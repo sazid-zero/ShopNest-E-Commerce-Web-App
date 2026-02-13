@@ -8,7 +8,7 @@ import {
     Watch,
     Printer,
     Drone,
-    Home,
+    House,
     ShoppingBag,
     MonitorSmartphone,
     Bone, // For Pet Supplies
@@ -26,7 +26,7 @@ export const categories = [
     { name: "SmartWatch", icon: Watch},
     { name: "Printers", icon: Printer},
     { name: "Drones", icon: Drone},
-    { name: "Smart Home", icon: Home },
+    { name: "Smart Home", icon: House },
     { name: "Accessories", icon: ShoppingBag },
     { name: "Wearables", icon: MonitorSmartphone },
     { name: "Pet Supplies", icon: Bone},

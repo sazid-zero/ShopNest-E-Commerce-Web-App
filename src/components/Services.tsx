@@ -1,9 +1,9 @@
 import { Truck, Headphones, ShieldCheck } from "lucide-react"
-import StoreBanner from "@/components/StoreBanner.tsx";
+import StoreBanner from "@/components/StoreBanner";
 
 export default function ServiceHighlights() {
     return (
-        <section className="bg-white py-10 px-6 sm:px-10 ">
+        <section className="py-10 px-6 sm:px-10 ">
             <span className="flex gap-1 items-center mb-12 w-full justify-center">
                 <p className="text-gray-900 font-bold text-2xl mb-6">Why Choose Us?</p>
             </span>

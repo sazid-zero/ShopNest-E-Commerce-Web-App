@@ -1,3 +1,5 @@
+'use client';
+import { usePathname } from 'next/navigation';
 import {
     Facebook,
     Instagram,
@@ -7,6 +9,10 @@ import {
 } from "lucide-react"
 
 export default function Footer() {
+    const pathname = usePathname();
+
+    if (pathname !== '/') return null;
+
     return (
         <footer id="footer-section" className="bg-gray-900 text-gray-300 pt-10 pb-6 px-6 sm:px-10">
             <div className="max-w-7xl mx-auto grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
@@ -54,7 +60,7 @@ export default function Footer() {
                         <li><a href="#" className="hover:text-white">Help Center</a></li>
                         <li><a href="#" className="hover:text-white">Track Order</a></li>
                         <li><a href="#" className="hover:text-white">Returns & Refunds</a></li>
-                        <li><a href="#" className="hover:text-white">Become a Seller</a></li>
+                        <li><a href="/become-seller" className="hover:text-white">Become a Seller</a></li>
                         <li><a href="#" className="hover:text-white">Contact Us</a></li>
                     </ul>
                 </div>

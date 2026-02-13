@@ -1,69 +1,91 @@
-# React + TypeScript + Vite
+# ShopNest E-Commerce Web App
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A modern, full-stack e-commerce application built with Next.js 15, PostgreSQL, and Firebase Authentication.
 
-Currently, two official plugins are available:
+## 🚀 Features
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+### 🛒 Customer Experience
+-   **Modern UI/UX**: Responsive design with staggered scroll animations (`Framer Motion`) and premium fade transitions (`Swiper`).
+-   **Product Discovery**: 
+    -   Dynamic Banner Carousel linking to featured products.
+    -   Featured Section with video-game style cards.
+    -   Advanced Filtering (Category, Type, Price Range, Sort Order).
+-   **Shopping**: 
+    -   Cart functionality with persistent storage.
+    -   Wishlist management.
+    -   Secure Checkout flow.
+-   **Account**: 
+    -   User Profile management.
+    -   Order History.
 
-## Expanding the ESLint configuration
+### 👨‍💼 Seller / Admin Dashboard
+-   **Role-Based Access**: Dedicated dashboards for Customers, Sellers, and Admins.
+-   **Seller Tools**:
+    -   Product Management (Create, Edit, Delete).
+    -   Order Management.
+    -   Sales Analytics.
+-   **Admin Control**: 
+    -   User Management.
+    -   Platform Overview.
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+### 🔒 Security & Backend
+-   **Authentication**: Firebase Auth (Google & Email/Password) with role-based route protection.
+-   **Database**: PostgreSQL (Neon/Vercel) with relation mappings for Users, Shops, Products, Orders, and Reviews.
+-   **API**: Next.js App Router API endpoints for secure data fetching.
 
-```js
-export default tseslint.config([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
+## 🛠️ Tech Stack
 
-      // Remove tseslint.configs.recommended and replace with this
-      ...tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      ...tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      ...tseslint.configs.stylisticTypeChecked,
+-   **Frontend**: Next.js 15, React, Tailwind CSS, Framer Motion, Lucide React, Swiper.
+-   **Backend**: Next.js API Routes, PostgreSQL (`pg` driver).
+-   **Auth**: Firebase Authentication, Firebase Admin SDK.
+-   **Deployment**: Vercel.
 
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-```
+## 📦 Installation
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+1.  **Clone the repository**:
+    ```bash
+    git clone https://github.com/your-username/shopnest.git
+    cd shopnest
+    ```
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+2.  **Install dependencies**:
+    ```bash
+    npm install
+    ```
 
-export default tseslint.config([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-```
+3.  **Environment Variables**:
+    Create a `.env.local` file with the following:
+    ```env
+    NEXT_PUBLIC_FIREBASE_API_KEY=...
+    NEXT_PUBLIC_FIREBASE_AUTH_DOMAIN=...
+    NEXT_PUBLIC_FIREBASE_PROJECT_ID=...
+    # ... other Firebase config
+    DATABASE_URL=postgresql://...
+    FIREBASE_ADMIN_PRIVATE_KEY=...
+    ```
+
+4.  **Run the development server**:
+    ```bash
+    npm run dev
+    ```
+
+## 🌱 Database Seeding
+
+To populate the database with initial products and banners:
+
+1.  Ensure your `DATABASE_URL` is set.
+2.  Run the seed endpoint:
+    ```bash
+    curl http://localhost:3000/api/seed-products
+    ```
+
+## 📁 Project Structure
+
+-   `src/app`: App Router pages and API routes.
+-   `src/components`: Reusable UI components (ProductCard, BannerCarousel, etc.).
+-   `src/lib`: Utilities (DB connection, Firebase init).
+-   `db/schema.sql`: Database schema definitions.
+
+## 🤝 Contributing
+
+Contributions are welcome! Please fork the repository and submit a pull request.

@@ -1,3 +1,4 @@
+'use client';
 import {
   Heart,
   ShoppingCart,
@@ -13,7 +14,7 @@ import {
 } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
 import React from "react";
-import { useNavigate } from "react-router-dom";
+import { useRouter } from "next/navigation";
 
 
 import { Button } from "@/components/ui/button";
@@ -28,14 +29,17 @@ import {
   PopoverContent,
   PopoverTrigger,
 } from "@/components/ui/popover";
-import SearchBar from "@/components/Search.tsx";
+import SearchBar from "@/components/Search";
 import { categories } from "@/lib/categories";
+import { useAuth } from "@/providers/AuthProvider";
+import { LogOut, Settings } from "lucide-react";
 
 export default function NavBar() {
+  const { user, logout } = useAuth();
   const navigationLinks = [
     { href: "/", label: "Home", icon: Home },
     { href: "/products", label: "Products", icon: ShoppingBag },
-    
+    { href: "/shops", label: "Shops", icon: Package },
     { href: "/orders", label: "Orders", icon: Package },
     {
       label: "Contact",
@@ -66,13 +70,11 @@ export default function NavBar() {
     open: { opacity: 1, y: 0 },
   };
 
-  const navigate = useNavigate();
+  const router = useRouter();
 
   const handleCategoryClick = (categoryName: string) => {
-    navigate(`/products?category=${encodeURIComponent(categoryName)}`);
+    router.push(`/products?category=${encodeURIComponent(categoryName)}`);
   };
-
-
 
   return (
     <header className="border-b px-4 md:px-6 fixed top-0 w-full z-50 bg-black">
@@ -196,7 +198,7 @@ export default function NavBar() {
           {/* Logo (Desktop) */}
           <a href="/" className="hidden lg:flex items-center gap-0">
             <img src="/img.png" alt="ShopNest Logo" className="h-7 w-7" />
-            <span className="font-bold text-xl text-transparent bg-gradient-to-r from-blue-500 to-purple-500 hover:from-purple-500 hover:to-blue-500 transition-all duration-200 bg-clip-text">
+            <span className="font-bold text-xl text-transparent bg-linear-to-r from-blue-500 to-purple-500 hover:from-purple-500 hover:to-blue-500 transition-all duration-200 bg-clip-text">
               ShopNest
             </span>
           </a>
@@ -257,7 +259,7 @@ export default function NavBar() {
         <div className="lg:hidden absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2">
           <a href="/" className="flex items-center gap-0">
             <img src="/img.png" alt="ShopNest Logo" className="h-7 w-7" />
-            <span className="font-bold text-xl text-transparent bg-gradient-to-r from-blue-500 to-purple-500 hover:from-purple-500 hover:to-blue-500 transition-all duration-200 bg-clip-text">
+            <span className="font-bold text-xl text-transparent bg-linear-to-r from-blue-500 to-purple-500 hover:from-purple-500 hover:to-blue-500 transition-all duration-200 bg-clip-text">
               ShopNest
             </span>
           </a>
@@ -275,16 +277,43 @@ export default function NavBar() {
           {/* Search and Sign In (Mobile) */}
           <div className="flex lg:hidden items-center gap-2">
             <SearchBar />
-            <Button
-              asChild
-              size="sm"
-              className="text-sm px-3 py-1.5 rounded-full bg-gradient-to-r from-blue-500 to-purple-500 text-white shadow-md hover:from-purple-500 hover:to-blue-500 transition-all duration-200"
-            >
-              <a href="/signin">
-                <User className="size-4" />
-                <span className="sr-only">Sign In</span>
-              </a>
-            </Button>
+            {user ? (
+              <Popover>
+                <PopoverTrigger asChild>
+                  <Button size="sm" className="rounded-full bg-blue-50 text-blue-600 border border-blue-100 p-1">
+                    {user.photoURL ? (
+                      <img src={user.photoURL} alt="User" className="w-8 h-8 rounded-full" referrerPolicy="no-referrer" />
+                    ) : (
+                      <User className="size-5" />
+                    )}
+                  </Button>
+                </PopoverTrigger>
+                <PopoverContent align="end" className="w-56 p-2 bg-white/95 backdrop-blur-md rounded-2xl shadow-xl border-0">
+                  <div className="p-3 border-b border-gray-100 mb-2">
+                    <p className="text-sm font-black text-gray-900 truncate">{user.displayName || 'User'}</p>
+                    <p className="text-[10px] font-bold text-gray-400 truncate">{user.email}</p>
+                  </div>
+                  <button
+                    onClick={logout}
+                    className="flex items-center gap-3 w-full p-2.5 rounded-xl text-sm font-bold text-red-500 hover:bg-red-50 transition-colors"
+                  >
+                    <LogOut className="size-4" />
+                    Logout
+                  </button>
+                </PopoverContent>
+              </Popover>
+            ) : (
+              <Button
+                asChild
+                size="sm"
+                className="text-sm px-3 py-1.5 rounded-full bg-linear-to-r from-blue-500 to-purple-500 text-white shadow-md hover:from-purple-500 hover:to-blue-500 transition-all duration-200"
+              >
+                <a href="/login">
+                  <User className="size-4" />
+                  <span className="sr-only">Sign In</span>
+                </a>
+              </Button>
+            )}
           </div>
 
           {/* Wishlist, Cart, Sign In (Desktop) */}
@@ -302,16 +331,59 @@ export default function NavBar() {
                 Cart
               </a>
             </Button>
-            <Button
-              asChild
-              size="sm"
-              className="text-sm px-3 py-1.5 rounded-full bg-gradient-to-r from-blue-500 to-purple-500 text-white shadow-md hover:from-purple-500 hover:to-blue-500 transition-all duration-200"
-            >
-              <a href="/signin" className="flex items-center gap-2">
-                <User className="size-4" />
-                <span className="font-semibold tracking-wide">Sign In</span>
-              </a>
-            </Button>
+            {user ? (
+              <Popover>
+                <PopoverTrigger asChild>
+                  <Button variant="ghost" className="flex items-center gap-2 text-white hover:text-blue-400 transition-colors p-2">
+                    <div className="w-8 h-8 rounded-full bg-blue-500/20 border border-blue-500/30 flex items-center justify-center overflow-hidden">
+                      {user.photoURL ? (
+                        <img src={user.photoURL} alt="User" className="w-full h-full object-cover" referrerPolicy="no-referrer" />
+                      ) : (
+                        <User className="size-5" />
+                      )}
+                    </div>
+                    <span className="font-bold text-sm hidden xl:block">{user.displayName || 'Account'}</span>
+                    <ChevronDown className="size-4 opacity-50" />
+                  </Button>
+                </PopoverTrigger>
+                <PopoverContent align="end" className="w-64 p-3 bg-white/95 backdrop-blur-md rounded-2xl shadow-2xl border-0 ring-1 ring-black/5">
+                  <div className="flex items-center gap-3 p-3 border-b border-gray-100 mb-2">
+                    <div className="w-10 h-10 rounded-full bg-linear-to-tr from-blue-500 to-purple-500 flex items-center justify-center text-white font-black">
+                      {user.displayName?.[0] || user.email?.[0] || 'U'}
+                    </div>
+                    <div className="min-w-0">
+                      <p className="text-sm font-black text-gray-900 truncate">{user.displayName || 'Member'}</p>
+                      <p className="text-[10px] font-bold text-gray-400 truncate tracking-tight">{user.email}</p>
+                    </div>
+                  </div>
+                  
+                  <div className="space-y-1">
+                    <a href="/dashboard" className="flex items-center gap-3 p-2.5 rounded-xl text-sm font-bold text-gray-600 hover:bg-gray-50 transition-colors group">
+                      <Settings className="size-4 text-gray-400 group-hover:text-blue-500 transition-colors" />
+                      Dashboard
+                    </a>
+                    <button
+                      onClick={logout}
+                      className="flex items-center gap-3 w-full p-2.5 rounded-xl text-sm font-bold text-red-500 hover:bg-red-50 transition-colors group"
+                    >
+                      <LogOut className="size-4 opacity-70 group-hover:scale-110 transition-transform" />
+                      Sign Out
+                    </button>
+                  </div>
+                </PopoverContent>
+              </Popover>
+            ) : (
+              <Button
+                asChild
+                size="sm"
+                className="text-sm px-3 py-1.5 rounded-full bg-linear-to-r from-blue-500 to-purple-500 text-white shadow-md hover:from-purple-500 hover:to-blue-500 transition-all duration-200"
+              >
+                <a href="/login" className="flex items-center gap-2">
+                  <User className="size-4" />
+                  <span className="font-semibold tracking-wide">Sign In</span>
+                </a>
+              </Button>
+            )}
           </div>
         </div>
       </div>
